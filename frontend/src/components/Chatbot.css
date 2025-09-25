@@ -1,0 +1,103 @@
+/* frontend/src/components/Chatbot.css - Fix for Text Visibility */
+
+.chatbot-container {
+    max-width: 600px;
+    margin: 40px auto;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    height: 70vh; /* Set a fixed height for the chat window */
+}
+
+h2 {
+    padding: 15px;
+    background-color: #3f51b5; /* Cove's primary color */
+    color: white;
+    margin: 0;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+}
+
+.message-list {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto; /* Allows scrolling */
+    background-color: white;
+}
+
+/* Individual message bubbles */
+.message-bubble {
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 18px;
+    max-width: 80%;
+    word-wrap: break-word;
+    
+    /* 💥 FIX 1: Set explicit text color to black for high contrast */
+    color: #000; 
+    /* 💥 FIX 2: Slightly increase font size for better readability */
+    font-size: 1em; 
+}
+
+.sender-label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 3px;
+    /* Ensure the sender label is also black */
+    color: #000; 
+    font-size: 0.85em;
+}
+
+.user {
+    background-color: #e1ffc7; /* Light green for user */
+    align-self: flex-end;
+    margin-left: auto; /* Pushes user bubbles to the right */
+    border-bottom-right-radius: 4px;
+}
+
+.bot {
+    background-color: #e0e0e0; /* Light grey for bot */
+    align-self: flex-start;
+    margin-right: auto; /* Keeps bot bubbles to the left */
+    border-bottom-left-radius: 4px;
+}
+
+.input-area {
+    display: flex;
+    padding: 15px;
+    border-top: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 0 0 10px 10px;
+}
+
+.input-area input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+    /* Ensure input text is clearly visible */
+    color: #000;
+}
+
+.input-area button {
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.input-area button:hover:not(:disabled) {
+    background-color: #303f9f;
+}
+
+.input-area button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
