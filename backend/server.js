@@ -5,6 +5,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const chatbotRoutes = require('./routes/chatbotRoutes');
 const connectDB = require('./config/db'); // 💥 NEW: Import the database connection function
+const weatherRoutes = require('./routes/weatherRoutes');
 
 // Load environment variables - THIS MUST BE THE FIRST EXECUTABLE LINE
 dotenv.config(); 
@@ -18,6 +19,7 @@ const app = express();
 // Middleware
 app.use(cors()); // Configure CORS options if needed
 app.use(express.json()); // To parse JSON bodies from the frontend
+app.use('/api/weather', weatherRoutes);
 
 // API Routes
 app.use('/api', chatbotRoutes); 
