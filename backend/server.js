@@ -3,9 +3,16 @@
 const express = require('express');
 const cors = require('cors'); 
 const dotenv = require('dotenv');
+
+
 const chatbotRoutes = require('./routes/chatbotRoutes');
 const connectDB = require('./config/db'); // 💥 NEW: Import the database connection function
 const weatherRoutes = require('./routes/weatherRoutes');
+
+const authRoutes = require('./routes/authRoutes');
+const googleAuthRoutes = require('./routes/googleOAuthRoutes');
+
+
 
 // Load environment variables - THIS MUST BE THE FIRST EXECUTABLE LINE
 dotenv.config(); 
@@ -24,6 +31,10 @@ app.use('/api/weather', weatherRoutes);
 // API Routes
 app.use('/api', chatbotRoutes); 
 // Add other routes here: app.use('/api/weather', weatherRoutes);
+
+// Use routes
+app.use('/api/auth', authRoutes);
+app.use('/api/auth', googleAuthRoutes);
 
 // Use the PORT from .env or default to 5000
 const PORT = process.env.PORT || 8050; // Using 8050 as you used it recently
