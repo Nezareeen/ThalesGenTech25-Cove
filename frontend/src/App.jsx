@@ -29,19 +29,25 @@ import './App.css';
 import ChatbotContainer from './components/ChatbotContainer'; 
 import GeolocationManager from './components/GeolocationManager'; // 💥 NEW IMPORT
 import DetailedMetricsPage from './pages/DetailedMetricsPage';
+import StartPage from './components/StartPage';
+import { useState } from 'react';
 
 function App() {
+  const [entered, setEntered] = useState(false);
+
+  const handleEnter = () => setEntered(true);
+
   return (
     <div className="App">
-        {/* 💥 GeolocationManager handles fetching the location */}
+      {!entered && <StartPage onEnter={handleEnter} />}
+
+      {entered && (
         <GeolocationManager>
-            
-            {/* 💥 ChatbotContainer is rendered by GeolocationManager, 
-               which injects userLocation and locationStatus props */}
-            <ChatbotContainer />
-            <hr style={{width: '600px', margin: '20px auto'}} />
-            <DetailedMetricsPage /> 
+          <ChatbotContainer />
+          <hr style={{width: '600px', margin: '20px auto'}} />
+          <DetailedMetricsPage />
         </GeolocationManager>
+      )}
     </div>
   );
 }

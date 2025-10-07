@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
+
+.start-page {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  background: #000;
+}
+
+.bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: saturate(1.05) contrast(1.02) brightness(0.95);
+  pointer-events: none; /* allow clicks through to overlay */
+  will-change: transform, opacity; /* hint for smoother rendering */
+}
+
+.overlay {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* Top-center About link */
+.about-link {
+  position: fixed; /* pin to viewport top */
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+  color: rgba(255,255,255,0.95);
+  text-decoration: none;
+  font-family: 'Krona One', sans-serif;
+  letter-spacing: 0.6px;
+  padding: 10px 16px;
+  border-radius: 999px; /* pill / very rounded */
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px) saturate(120%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+.about-link:hover {
+  transform: translateX(-50%) translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+}
+
+.glass-card {
+  width: min(880px, 92%);
+  border-radius: 16px;
+  padding: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glass-content {
+  text-align: center;
+  color: #fff;
+  font-family: 'Krona One', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+.brand {
+  font-size: clamp(48px, 8vw, 120px);
+  margin: 0;
+  letter-spacing: -2px;
+  text-shadow: 0 6px 30px rgba(0,0,0,0.7);
+  opacity: 0.98;
+}
+
+.tag {
+  margin-top: 8px;
+  font-size: clamp(14px, 2vw, 20px);
+  color: rgba(255,255,255,0.9);
+}
+
+@media (max-width: 600px) {
+  .glass-card { padding: 18px; }
+  .brand { font-size: 56px; }
+}
+
+/* Bottom-right Next button (liquid glass style) */
+.next-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 70;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%; /* ensure perfect circle */
+  border: 1px solid rgba(255,255,255,0.18);
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  color: #fff;
+  font-size: 34px;
+  line-height: 1; /* center visually */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px) saturate(120%);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+.next-btn:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.5); }
+
+@media (max-width: 480px) {
+  .next-btn { width: 54px; height: 54px; font-size: 22px; right: 14px; bottom: 14px; }
+  .about-link { top: 12px; padding: 4px 10px; }
+}
