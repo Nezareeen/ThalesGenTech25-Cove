@@ -17,8 +17,15 @@ exports.googleOAuth = async (req, res) => {
   let user = await User.findOne({ email });
   if (!user) {
     user = new User({ username: name, email, password: '' });
-    await user.save();
   }
+  // Google verified the email for us
+  user.isVerified = true;
+  await user.save();
   const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
   res.json({ token });
+};
+
+exports.logout = async (req, res) => {
+  res.clearCookie && res.clearCookie('token');
+  res.status(200).json({ message: 'Logged out.' });
 };
