@@ -30,18 +30,23 @@ import ChatbotContainer from './components/ChatbotContainer';
 import GeolocationManager from './components/GeolocationManager'; // 💥 NEW IMPORT
 import DetailedMetricsPage from './pages/DetailedMetricsPage';
 import StartPage from './components/StartPage';
+import Signup from './components/Signup';
 import { useState } from 'react';
 
 function App() {
-  const [entered, setEntered] = useState(false);
+  // view: 'start' | 'signup' | 'app'
+  const [view, setView] = useState('start');
 
-  const handleEnter = () => setEntered(true);
+  const goToSignup = () => setView('signup');
+  const enterApp = () => setView('app');
 
   return (
     <div className="App">
-      {!entered && <StartPage onEnter={handleEnter} />}
+      {view === 'start' && <StartPage onEnter={goToSignup} />}
 
-      {entered && (
+      {view === 'signup' && <Signup onSuccess={enterApp} onBack={() => setView('start')} />}
+
+      {view === 'app' && (
         <GeolocationManager>
           <ChatbotContainer />
           <hr style={{width: '600px', margin: '20px auto'}} />
