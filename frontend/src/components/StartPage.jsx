@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import './StartPage.css';
 
-function StartPage({ onEnter }) {
+function StartPage({ onSignUp }) {
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -44,7 +44,7 @@ function StartPage({ onEnter }) {
         </div>
 
         {/* Bottom-right Next button */}
-        <button className="next-btn" aria-label="Next" onClick={onEnter}>→</button>
+        <button className="next-btn" aria-label="Next" onClick={onSignUp}>→</button>
       </div>
     </div>
   );
