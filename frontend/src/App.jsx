@@ -29,19 +29,14 @@ import './App.css';
 import ChatbotContainer from './components/ChatbotContainer'; 
 import GeolocationManager from './components/GeolocationManager'; // 💥 NEW IMPORT
 import DetailedMetricsPage from './pages/DetailedMetricsPage';
-import StartPage from './components/StartPage';
-import SignupPage from './components/SignupPage';
-import { useState } from 'react';
 
 function App() {
-  const [showSignup, setShowSignup] = useState(false);
-  const handleShowSignup = () => setShowSignup(true);
 
   return (
-    <div className="App">
-      {!showSignup && <StartPage onSignUp={handleShowSignup} />}
-
-      {showSignup && <SignupPage onBack={() => setShowSignup(false)} />}
+    <div>
+      <GeolocationManager /> {/* 💥 NEW COMPONENT */}
+      <ChatbotContainer />
+      <DetailedMetricsPage />
     </div>
   );
 }
