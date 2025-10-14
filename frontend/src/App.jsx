@@ -34,9 +34,11 @@ function App() {
 
   return (
     <div>
-      <GeolocationManager /> {/* 💥 NEW COMPONENT */}
-      <ChatbotContainer />
-      <DetailedMetricsPage />
+      {/* GeolocationManager now wraps children so it can inject userLocation and locationStatus props */}
+      <GeolocationManager>
+        <ChatbotContainer />
+        <DetailedMetricsPage />
+      </GeolocationManager>
     </div>
   );
 }
