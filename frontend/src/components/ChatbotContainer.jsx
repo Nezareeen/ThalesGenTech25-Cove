@@ -112,8 +112,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Chatbot.css'; 
 
-// Base URL for your backend server
-const BACKEND_URL = 'http://localhost:8050/api/chat';
+// Base URL for your backend server. Prefer Vite env var, fall back to relative path so dev proxy works.
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || '/api/chat';
 
 // 💥 Component now accepts userLocation and locationStatus props
 function ChatbotContainer({ userLocation, locationStatus }) { 
@@ -158,8 +158,15 @@ function ChatbotContainer({ userLocation, locationStatus }) {
       setMessages(prevMessages => [...prevMessages, { sender: 'bot', text: botMessage }]);
 
     } catch (error) {
-      console.error('Error sending message:', error);
-      setMessages(prevMessages => [...prevMessages, { sender: 'bot', text: 'Error: Could not connect to the Cove AI server.' }]);
+      // Improved logging: axios errors often contain response and request objects
+      console.error('Error sending message:', error?.message);
+      if (error?.response) {
+        console.error('Response status:', error.response.status);
+        console.error('Response data:', error.response.data);
+      } else if (error?.request) {
+        console.error('No response received, request was sent:', error.request);
+      }
+      setMessages(prevMessages => [...prevMessages, { sender: 'bot', text: 'Error: Could not connect to the Cove AI server. See console for details.' }]);
     } finally {
       setIsLoading(false);
       const chatWindow = document.querySelector('.message-list');
