@@ -1,0 +1,44 @@
+/* Style for the main container to set the background that the glass will blur */
+.liquid-glass-demo-container {
+  /* Set a visually interesting background (e.g., an image or gradient) */
+  background-image: url('../../assets/pexels-pixabay-277785.jpg'); /* Use a placeholder image for testing */
+  background-size: cover; /* Make sure the image covers the container */
+  background-position: center; /* Center the image */
+  
+  /* Set container dimensions */
+  width: 100%;
+  min-height: 80vh; /* Set a decent height for viewing the effect */
+  
+  /* Center the content */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Style for the LiquidGlass container itself (the 'glass' pane) */
+.my-liquid-glass-box {
+  /* Set the size and padding for the content inside the glass */
+  width: 80%;
+  max-width: 400px;
+  padding: 30px;
+  border-radius: 15px; /* Optional: adds a nice rounded look */
+  
+  /* Style for the content */
+  text-align: center;
+  color: white; /* Text color */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Optional: improves readability */
+  
+  /* Add some margin to separate it from other content */
+  margin-bottom: 20px;
+}
+
+/* Optional: Style for the content outside the glass */
+.outside-content {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  border-radius: 5px;
+}
