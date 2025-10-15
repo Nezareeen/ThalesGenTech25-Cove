@@ -1,0 +1,65 @@
+/* Fullscreen root with background image from assets */
+.startpage-root {
+	position: relative;
+	width: 100%;
+	min-height: 100vh;
+	overflow: hidden;
+	/* Update the path to your actual asset file name */
+	background-image: url('../../assets/pexels-pixabay-277785.jpg');
+	background-size: cover;
+	background-position: center;
+}
+
+/* Centered branding */
+.branding {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+.branding-title {
+	font-family: 'Krona One', sans-serif;
+	font-size: 65px;
+	line-height: 1.1;
+	margin: 0;
+	color: #ffffff;
+	text-shadow: 0 6px 24px rgba(0,0,0,0.35);
+}
+
+/* Positioning wrapper for the Next control */
+.next-wrapper {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    margin-bottom: -200px;
+    margin-right: -10px;
+}
+
+.liquid-container { display: inline-block; margin-bottom: -70px }
+
+.next-button {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: #ffffff;
+    font-weight: 600;
+    font-family: 'Krona One', sans-serif;
+    cursor: pointer;
+    user-select: none;
+    
+}
+
+/* Small screens adjustments */
+@media (max-width: 640px) {
+	.branding-title {
+		font-size: 36px;
+	}
+    .next-wrapper {
+		bottom: 16px;
+		right: 16px;
+	}
+}
+
+

@@ -1,0 +1,110 @@
+/* Root shares StartPage background */
+.login-root {
+    position: relative;
+    width: 100%;
+    height: 100dvh; /* lock to viewport height to avoid page scroll */
+    overflow: hidden; /* prevent vertical scroll */
+    background-image: url('../../assets/pexels-pixabay-277785.jpg');
+    background-size: cover;
+    background-position: center;
+    display: grid;
+    grid-template-columns: 60% 40%; /* left branding (60%), right form (40%) */
+}
+
+/* Branding left pane (with white overlay) */
+.branding-pane {
+	position: relative;
+	grid-column: 1 / 2;
+}
+
+.branding-overlay {
+	position: absolute;
+	inset: 0;
+	background: rgb(255, 255, 255);
+}
+
+.branding-content {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.branding-titlelogin {
+	font-family: 'Krona One', sans-serif;
+	font-size: 64px;
+	color: #1B6F77;
+}
+
+/* Right form pane aligned to the rightmost 10% area visually */
+.form-pane {
+    grid-column: 2 / 3;
+    display: flex;
+    align-items: center; /* vertical centering */
+    justify-content: center; /* horizontal centering within right pane */
+    width: 100%;
+    height: 100%;
+    /* Added text-align to ensure any non-flex content like links are centered */
+    text-align: center; 
+}
+
+.form-glass {
+    max-width: 360px;
+    width: 100%;
+    /* Remove 'margin: 0;' so the Flexbox 'justify-content: center;' can center this element */
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    color: #fff;
+    /* Optional: Added to ensure form content respects the center if needed */
+    align-items: center;
+    text-align: center;
+}
+
+.link { 
+    background: transparent; 
+    border: 0; 
+    color: #fff; 
+    text-decoration: underline; 
+    cursor: pointer; 
+    /* Change align-self to center the links if they are not full width */
+    align-self: center; 
+}
+
+.form-title { font-family: 'Krona One', sans-serif; margin: 0 0 8px; }
+
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field span { font-size: 14px; opacity: 0.9; }
+.field input {
+	padding: 10px 12px;
+	border-radius: 10px;
+	border: 1px solid rgba(255,255,255,0.25);
+	background: rgba(0,0,0,0.25);
+	color: #fff;
+}
+
+.btn { 
+	padding: 10px 12px; 
+	border-radius: 12px; 
+	border: 0; 
+	cursor: pointer; 
+	font-weight: 600;
+}
+.btn.primary { background: #0ea5e9; color: #fff; }
+.btn.google { background: #fff; color: #111; }
+
+.link { background: transparent; border: 0; color: #fff; text-decoration: underline; cursor: pointer; align-self: flex-start; }
+.link.back { opacity: 0.8; }
+
+@media (max-width: 900px) {
+    .login-root { grid-template-columns: 1fr; height: 100dvh; }
+    .form-pane { justify-content: center; padding: 24px; }
+    .branding-pane { display: none; }
+}
+
+

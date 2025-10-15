@@ -22,27 +22,52 @@
 
 // frontend/src/App.jsx (Updated with GeolocationManager)
 
-import React from 'react'; // Keep React import
-import './App.css'; 
+// import React from 'react'; // Keep React import
+// import './App.css'; 
 
-// Import the components
-import ChatbotContainer from './components/ChatbotContainer'; 
-import GeolocationManager from './components/GeolocationManager'; // 💥 NEW IMPORT
-import DetailedMetricsPage from './pages/DetailedMetricsPage';
+// // Import the components
+// import ChatbotContainer from './components/ChatbotContainer'; 
+// import GeolocationManager from './components/GeolocationManager'; // 💥 NEW IMPORT
+// import DetailedMetricsPage from './pages/DetailedMetricsPage';
+// import TestingLiquidGlass from './components/TestingLiquidGlass'; // 💥 NEW IMPORT for testing liquid glass
+
+// function App() {
+
+//   return (
+//     <div>
+//       {/* Temporarily showing TestingLiquidGlass for testing purposes */}
+//       <TestingLiquidGlass />
+      
+//       {/* Commented out other components for now - uncomment when ready */}
+//       {/* <GeolocationManager>
+//         <ChatbotContainer />
+//         <DetailedMetricsPage />
+//       </GeolocationManager> */}
+//     </div>
+//   );
+// }
+
+// export default App;
+
+/* NOTE: Removed unused imports like useState, reactLogo, viteLogo from the original App.jsx */
+
+import React, { useState } from 'react';
+import './App.css';
+import StartPage from './pages/StartPage';
+import LoginPage from './pages/LoginPage';
 
 function App() {
+  const [route, setRoute] = useState('start'); // 'start' | 'login'
 
-  return (
-    <div>
-      {/* GeolocationManager now wraps children so it can inject userLocation and locationStatus props */}
-      <GeolocationManager>
-        <ChatbotContainer />
-        <DetailedMetricsPage />
-      </GeolocationManager>
-    </div>
-  );
+  if (route === 'start') {
+    return <StartPage onNext={() => setRoute('login')} />;
+  }
+
+  if (route === 'login') {
+    return <LoginPage onBack={() => setRoute('start')} />;
+  }
+
+  return null;
 }
 
 export default App;
-
-/* NOTE: Removed unused imports like useState, reactLogo, viteLogo from the original App.jsx */
