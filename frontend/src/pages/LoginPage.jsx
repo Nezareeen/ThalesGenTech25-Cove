@@ -28,7 +28,7 @@ const LoginPage = ({ onBack }) => {
             <h2 className="form-title">Welcome back</h2>
             <label className="field">
               <span>Username or Email</span>
-              <input type="text" placeholder="you@example.com" required />
+              <input type="text" placeholder="yourusername@email.com" required />
             </label>
             <label className="field">
               <span>Password</span>

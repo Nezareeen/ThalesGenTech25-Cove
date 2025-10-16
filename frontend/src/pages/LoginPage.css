@@ -38,22 +38,24 @@
 	color: #1B6F77;
 }
 
-/* Right form pane aligned to the rightmost 10% area visually */
+/* Right form pane - perfectly centered */
 .form-pane {
     grid-column: 2 / 3;
-    display: flex;
-    align-items: center; /* vertical centering */
-    justify-content: center; /* horizontal centering within right pane */
+    position: relative; /* Enable absolute positioning for child */
     width: 100%;
     height: 100%;
-    /* Added text-align to ensure any non-flex content like links are centered */
-    text-align: center; 
+    padding: 20px; /* Add some padding to prevent edge touching */
+    box-sizing: border-box;
 }
 
 .form-glass {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Perfect centering */
     max-width: 360px;
-    width: 100%;
-    /* Remove 'margin: 0;' so the Flexbox 'justify-content: center;' can center this element */
+    width: calc(100% - 40px); /* Account for padding */
+    margin: 0;
 }
 
 .login-form {
@@ -61,9 +63,8 @@
     flex-direction: column;
     gap: 12px;
     color: #fff;
-    /* Optional: Added to ensure form content respects the center if needed */
-    align-items: center;
-    text-align: center;
+    align-items: stretch; /* Make form elements stretch to full width */
+    text-align: left; /* Left-align form content for better UX */
 }
 
 .link { 
@@ -72,8 +73,8 @@
     color: #fff; 
     text-decoration: underline; 
     cursor: pointer; 
-    /* Change align-self to center the links if they are not full width */
-    align-self: center; 
+    align-self: flex-start; /* Left-align links for better UX */
+    margin-top: 8px; /* Add some spacing */
 }
 
 .form-title { font-family: 'Krona One', sans-serif; margin: 0 0 8px; }
@@ -98,12 +99,15 @@
 .btn.primary { background: #0ea5e9; color: #fff; }
 .btn.google { background: #fff; color: #111; }
 
-.link { background: transparent; border: 0; color: #fff; text-decoration: underline; cursor: pointer; align-self: flex-start; }
 .link.back { opacity: 0.8; }
 
 @media (max-width: 900px) {
     .login-root { grid-template-columns: 1fr; height: 100dvh; }
-    .form-pane { justify-content: center; padding: 24px; }
+    .form-pane { padding: 24px; }
+    .form-glass { 
+        width: calc(100% - 48px); /* Account for increased padding on mobile */
+        max-width: none; /* Allow full width on mobile */
+    }
     .branding-pane { display: none; }
 }
 
