@@ -25,7 +25,7 @@ const LoginPage = ({ onBack }) => {
           elasticity={0.3}
         >
           <form className="login-form" onSubmit={(e) => e.preventDefault()}>
-            <h2 className="form-title">Welcome back</h2>
+            <h2 className="form-title">Welcome back!</h2>
             <label className="field">
               <span>Username or Email</span>
               <input type="text" placeholder="yourusername@email.com" required />

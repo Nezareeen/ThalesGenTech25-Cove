@@ -91,13 +91,13 @@
 
 .btn { 
 	padding: 10px 12px; 
-	border-radius: 12px; 
+	border-radius: 32px; 
 	border: 0; 
 	cursor: pointer; 
 	font-weight: 600;
 }
-.btn.primary { background: #0ea5e9; color: #fff; }
-.btn.google { background: #fff; color: #111; }
+.btn.primary { background: #0ea4e94f; color: #fff; }
+.btn.google { background: #ffffff00; color: #ffffff; }
 
 .link.back { opacity: 0.8; }
 
