@@ -16,7 +16,7 @@ const LoginPage = ({ onBack, onSignup }) => {
             onClick={() => onSignup && onSignup()}
             aria-label="Create an account"
           >
-            Create an account
+            Create an account →
           </button>
         </div>
       </section>
@@ -33,18 +33,21 @@ const LoginPage = ({ onBack, onSignup }) => {
           elasticity={0.3}
         >
           <form className="login-form" onSubmit={(e) => e.preventDefault()}>
-            <h2 className="form-title">Welcome back</h2>
+            <h2 className="form-title">Welcome back!</h2>
             <label className="field">
-              <span>Username or Email</span>
-              <input type="text" placeholder="yourusername@email.com" required />
+              <input type="text" placeholder="Username or Email" required />
             </label>
             <label className="field">
-              <span>Password</span>
-              <input type="password" placeholder="••••••••" required />
+              <input type="password" placeholder="Password" required />
             </label>
 
             <button type="submit" className="btn primary">Login</button>
             <button type="button" className="btn google">Continue with Google</button>
+
+            {/* Mobile-only signup button: shown inside the form on small screens */}
+            <button type="button" className="btn signup-mobile" onClick={() => onSignup && onSignup()}>
+              Create an account
+            </button>
 
             <button type="button" className="link" onClick={() => alert('Forgot password')}>Forgot password?</button>
             {onBack && (
@@ -59,6 +62,7 @@ const LoginPage = ({ onBack, onSignup }) => {
 
 LoginPage.propTypes = {
   onBack: PropTypes.func,
+  onSignup: PropTypes.func,
 };
 
 export default LoginPage;

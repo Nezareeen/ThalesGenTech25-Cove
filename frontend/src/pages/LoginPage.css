@@ -27,15 +27,18 @@
 	position: relative;
 	width: 100%;
 	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    display: flex;
+    flex-direction: column; /* stack title and (originally) button vertically */
+    align-items: center; /* center horizontally */
+    justify-content: center; /* center vertically */
 }
 
 .branding-titlelogin {
 	font-family: 'Krona One', sans-serif;
 	font-size: 64px;
 	color: #1B6F77;
+	margin: 0; /* remove default margin to keep perfect centering */
+	text-align: center;
 }
 
 /* Right form pane - perfectly centered */
@@ -91,13 +94,13 @@
 
 .btn { 
 	padding: 10px 12px; 
-	border-radius: 12px; 
+	border-radius: 32px; 
 	border: 0; 
 	cursor: pointer; 
 	font-weight: 600;
 }
-.btn.primary { background: #0ea5e9; color: #fff; }
-.btn.google { background: #fff; color: #111; }
+.btn.primary { background: #0ea4e94f; color: #fff; }
+.btn.google { background: #ffffff00; color: #ffffff; }
 
 .link.back { opacity: 0.8; }
 
@@ -113,4 +116,46 @@
 
 .link-signup-link{
     color: #1B6F77;
+    background-color: #ffffff00;
 }
+
+/* Move the "Create an account" button to the bottom-left of the viewport */
+.link-signup-link {
+    position: fixed;
+    left: 24px;
+    bottom: 24px;
+    z-index: 60; /* above most content */
+    background: rgba(0, 0, 0, 0);
+    color: #1B6F77;
+    padding: 10px 16px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;    
+    font-weight: 600;
+}
+
+@media (max-width: 900px) {
+    /* hide the fixed signup button on small screens since the left pane is removed */
+    .link-signup-link { display: none; }
+    /* show a signup button inside the form on mobile */
+    .signup-mobile {
+        display: block;
+        width: 100%;
+        max-width: 360px;
+        margin: 8px 0 12px;
+        background: #0ea4e9;
+        color: #fff;
+        padding: 12px 14px;
+        border-radius: 10px;
+        border: none;
+        text-align: center;
+        cursor: pointer;
+        font-weight: 700;
+    }
+}
+
+/* hide mobile signup button on larger screens */
+@media (min-width: 901px) {
+    .signup-mobile { display: none; }
+}
+

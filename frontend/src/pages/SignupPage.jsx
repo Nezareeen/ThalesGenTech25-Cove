@@ -20,16 +20,20 @@ const SignupPage = ({ onBack }) => {
           <form className="signup-form" onSubmit={(e) => e.preventDefault()}>
             <h2 className="form-title">Create an account</h2>
             <label className="field">
-              <span>Full name</span>
-              <input type="text" placeholder="Jane Doe" required />
+
+              <input type="text" placeholder="Username" required />
             </label>
             <label className="field">
-              <span>Username or Email</span>
-              <input type="email" placeholder="you@email.com" required />
+
+              <input type="email" placeholder="Email" required />
             </label>
             <label className="field">
-              <span>Password</span>
-              <input type="password" placeholder="••••••••" required />
+
+              <input type="password" placeholder="Set Password" required />
+            </label>
+            <label className="field">
+
+              <input type="password" placeholder="Confirm Password" required />
             </label>
 
             <button type="submit" className="btn primary">Sign up</button>
