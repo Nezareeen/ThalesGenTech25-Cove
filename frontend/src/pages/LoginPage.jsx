@@ -3,13 +3,21 @@ import PropTypes from 'prop-types';
 import LiquidGlass from 'liquid-glass-react';
 import './LoginPage.css';
 
-const LoginPage = ({ onBack }) => {
+const LoginPage = ({ onBack, onSignup }) => {
   return (
     <main className="login-root">
       <section className="branding-pane">
         <div className="branding-overlay" />
         <div className="branding-content">
           <h1 className="branding-titlelogin">Cove.</h1>
+          <button
+            type="button"
+            className="link-signup-link"
+            onClick={() => onSignup && onSignup()}
+            aria-label="Create an account"
+          >
+            Create an account
+          </button>
         </div>
       </section>
 
