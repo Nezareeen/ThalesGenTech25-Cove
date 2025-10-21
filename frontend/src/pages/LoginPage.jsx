@@ -3,13 +3,21 @@ import PropTypes from 'prop-types';
 import LiquidGlass from 'liquid-glass-react';
 import './LoginPage.css';
 
-const LoginPage = ({ onBack }) => {
+const LoginPage = ({ onBack, onSignup }) => {
   return (
     <main className="login-root">
       <section className="branding-pane">
         <div className="branding-overlay" />
         <div className="branding-content">
           <h1 className="branding-titlelogin">Cove.</h1>
+          <button
+            type="button"
+            className="link-signup-link"
+            onClick={() => onSignup && onSignup()}
+            aria-label="Create an account"
+          >
+            Create an account →
+          </button>
         </div>
       </section>
 
@@ -27,16 +35,19 @@ const LoginPage = ({ onBack }) => {
           <form className="login-form" onSubmit={(e) => e.preventDefault()}>
             <h2 className="form-title">Welcome back!</h2>
             <label className="field">
-              <span>Username or Email</span>
-              <input type="text" placeholder="yourusername@email.com" required />
+              <input type="text" placeholder="Username or Email" required />
             </label>
             <label className="field">
-              <span>Password</span>
-              <input type="password" placeholder="••••••••" required />
+              <input type="password" placeholder="Password" required />
             </label>
 
             <button type="submit" className="btn primary">Login</button>
             <button type="button" className="btn google">Continue with Google</button>
+
+            {/* Mobile-only signup button: shown inside the form on small screens */}
+            <button type="button" className="btn signup-mobile" onClick={() => onSignup && onSignup()}>
+              Create an account
+            </button>
 
             <button type="button" className="link" onClick={() => alert('Forgot password')}>Forgot password?</button>
             {onBack && (
@@ -51,6 +62,7 @@ const LoginPage = ({ onBack }) => {
 
 LoginPage.propTypes = {
   onBack: PropTypes.func,
+  onSignup: PropTypes.func,
 };
 
 export default LoginPage;
