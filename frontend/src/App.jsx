@@ -55,6 +55,7 @@ import React, { useState } from 'react';
 import './App.css';
 import StartPage from './pages/StartPage';
 import LoginPage from './pages/LoginPage';
+import SignupPage from './pages/SignupPage';
 
 function App() {
   const [route, setRoute] = useState('start'); // 'start' | 'login'
@@ -64,7 +65,11 @@ function App() {
   }
 
   if (route === 'login') {
-    return <LoginPage onBack={() => setRoute('start')} />;
+    return <LoginPage onBack={() => setRoute('start')} onSignup={() => setRoute('signup')} />;
+  }
+
+  if (route === 'signup') {
+    return <SignupPage onBack={() => setRoute('login')} />;
   }
 
   return null;
